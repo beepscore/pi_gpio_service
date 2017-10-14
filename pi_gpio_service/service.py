@@ -145,5 +145,13 @@ def api_status():
 #     return jsonify(data)
 
 if __name__ == '__main__':
-    # '0.0.0.0' accessible to any device on the network
-    app.run(host='0.0.0.0', debug=True)
+    try:
+        # '0.0.0.0' accessible to any device on the network
+        app.run(host='0.0.0.0', debug=True)
+    except RuntimeError:
+        pass
+    finally:
+        # fix RunTimeWarning This channel is already in use
+        # may need to put in a try:catch:finally finally section to handle exceptions
+        GPIO.cleanup()
+
