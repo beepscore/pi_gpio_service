@@ -99,7 +99,14 @@ def pin_status(pin_number_string):
 
 
 def pin_update(pin_number_string, value):
-    if pin_number_string in pins.keys():
+    """
+    set pin to value
+    :param pin_number_string: a string representing a pin number e.g. '25'
+    :param value: value to set pin to
+    :return: dictionary with status
+    return error if pin is not configured as an output
+    """
+    if pin_number_string in output_pins(pins).keys():
         pin_number = int(pin_number_string)
 
         GPIO.output(pin_number, value)
