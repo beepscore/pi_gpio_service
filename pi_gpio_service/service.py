@@ -154,6 +154,16 @@ def gpio_pin(pin_number_string):
     return jsonify(data)
 
 
+@app.route("/api/v1/gpio/status/", methods=['GET'])
+def gpio_status():
+    data_list = []
+    for pin_number_string in sorted(pins.keys()):
+        data_list.append(pin_status(pin_number_string))
+
+    data = {'data': data_list}
+    return jsonify(data)
+
+
 if __name__ == '__main__':
     try:
         # '0.0.0.0' accessible to any device on the network
