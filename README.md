@@ -55,6 +55,7 @@ https://pypi.python.org/pypi/RPi.GPIO
     conda list
     conda remove rpi.gpio
     
-TODO:
-    
-pip install version 0.6.3 source into conda environment
+### with conda environment beepscore activated
+
+    pip install RPi.GPIO
+
