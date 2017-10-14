@@ -52,10 +52,16 @@ VALID_LOW_VALUES = [0, '0', 'LOW']
 
 
 def configure_pin_as_input(pin_number):
+    """
+    :param pin_number: an integer
+    """
     GPIO.setup(pin_number, GPIO.IN)
 
 
 def configure_pin_as_output(pin_number):
+    """
+    :param pin_number: an integer
+    """
     GPIO.setup(pin_number, GPIO.OUT)
     GPIO.output(pin_number, GPIO.LOW)
 
@@ -69,6 +75,10 @@ def configure_pins(pins):
 
 
 def pin_status(pin_number_string):
+    """
+    :param pin_number_string: a string e.g. '24'
+    :return:  python dictionary, can be jsonified
+    """
     if pin_number_string in pins.keys():
         pin_number = int(pin_number_string)
 
