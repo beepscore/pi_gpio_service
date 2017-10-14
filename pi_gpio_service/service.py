@@ -120,7 +120,7 @@ configure_pins(pins)
 @app.route("/api/v1/ping/", methods=['GET'])
 def api_status():
     if request.method == 'GET':
-        data = {'api_name': 'pi_gpio_service',
+        data = {'api_name': 'pi_gpio',
                 'version': '1.0',
                 'status': 'SUCCESS',
                 'response': 'pong'}
