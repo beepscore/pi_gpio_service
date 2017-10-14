@@ -47,8 +47,14 @@ RuntimeError: No access to /dev/mem. Try running as root!
 
 Apparently RPi.gpio is out of date.
 Current version 0.6.3 doesn't require root.
-
-TODO:
-In conda environment beepscore uninstall version 0.5.11
-then pip install version 0.6.3 source into conda environment
+https://raspberrypi.stackexchange.com/questions/40105/access-gpio-pins-without-root-no-access-to-dev-mem-try-running-as-root#40106
 https://pypi.python.org/pypi/RPi.GPIO
+
+### In conda environment beepscore uninstall version 0.5.11
+
+    conda list
+    conda remove rpi.gpio
+    
+TODO:
+    
+pip install version 0.6.3 source into conda environment
