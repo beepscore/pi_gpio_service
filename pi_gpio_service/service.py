@@ -165,6 +165,29 @@ def gpio_status():
 
 
 # POST but not GET because GET should not change any state on the server
+# in client terminal can use curl, e.g.
+# curl --request POST http://10.0.0.4:5000/api/v1/gpio/set-all-outputs-high/
+#
+# {
+#   "data": [
+#     {
+#       "error": null,
+#       "new_value": 1,
+#       "pin_direction": "output",
+#       "pin_name": "OUT_24",
+#       "pin_number": "24",
+#       "status": "SUCCESS"
+#     },
+#     {
+#       "error": null,
+#       "new_value": 1,
+#       "pin_direction": "output",
+#       "pin_name": "OUT_25",
+#       "pin_number": "25",
+#       "status": "SUCCESS"
+#     }
+#   ]
+# }
 @app.route("/api/v1/gpio/set-all-outputs-high/", methods=['POST'])
 def gpio_set_all_outputs_high():
     data_list = []
