@@ -164,8 +164,8 @@ def gpio_status():
     return jsonify(data)
 
 
-@app.route("/api/v1/gpio/set-all-output-high/", methods=['POST'])
-def gpio_set_all_output_high():
+@app.route("/api/v1/gpio/set-all-outputs-high/", methods=['POST'])
+def gpio_set_all_outputs_high():
     data_list = []
     for pin_number_string in sorted(output_pins(pins).keys()):
         data_list.append(pin_update(pin_number_string, 1))

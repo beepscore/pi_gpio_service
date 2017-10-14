@@ -22,6 +22,13 @@ https://www.raspberrypi.org/learning/python-web-server-with-flask/worksheet
 
 # Results
 
+### endpoints
+e.g. in client browser enter 
+
+    http://10.0.0.4:5000/api/v1/ping/
+    http://10.0.0.4:5000/api/v1/gpio/status/
+    http://10.0.0.4:5000/api/v1/gpio/set-all-outputs-high/
+
 ## Appendix install flask from anaconda/miniconda
 
 Create anaconda environment
@@ -42,9 +49,6 @@ pi console shows Running on http://0.0.0.0:5000
 ### Fing
 fing shows raspberry pi is on local network at 10.0.0.4  
 
-On macos browser enter 
-
-    http://10.0.0.4:5000/api/v1/ping/
     
 ## Appendix RPi.gpio
 Package notes RPi.gpio library is not suitable for precise real time control.
