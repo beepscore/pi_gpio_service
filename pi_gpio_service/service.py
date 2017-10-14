@@ -164,10 +164,13 @@ def gpio_status():
     return jsonify(data)
 
 
-@app.route("/api/v1/gpio/set-all-outputs-high/", methods=['POST'])
+# POST but not GET because method changes pin state?
+@app.route("/api/v1/gpio/set-all-outputs-high/", methods=['POST', 'GET'])
 def gpio_set_all_outputs_high():
     data_list = []
-    for pin_number_string in sorted(output_pins(pins).keys()):
+    output_pin_number_strings = sorted(output_pins(pins).keys())
+    print('output_pin_number_strings', output_pin_number_strings)
+    for pin_number_string in output_pin_number_strings:
         data_list.append(pin_update(pin_number_string, 1))
 
     data = {'data': data_list}
