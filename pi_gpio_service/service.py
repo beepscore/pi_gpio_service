@@ -144,6 +144,17 @@ def api_status():
         return jsonify(data)
 
 
+# GET will return status, POST will set pin value
+# in client terminal can use curl, e.g.
+# curl --request POST --data "value=0" http://10.0.0.4:5000/api/v1/gpio/24/
+# {
+#   "error": null,
+#   "new_value": 0,
+#   "pin_direction": "output",
+#   "pin_name": "OUT_24",
+#   "pin_number": "24",
+#   "status": "SUCCESS"
+# }
 @app.route("/api/v1/gpio/<pin_number_string>/", methods=['POST', 'GET'])
 def gpio_pin(pin_number_string):
     if request.method == 'GET':
