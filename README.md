@@ -22,7 +22,7 @@ https://www.raspberrypi.org/learning/python-web-server-with-flask/worksheet
 
 # Results
 
-## RPi.gpio
+## Appendix RPi.gpio
 miniconda didn't come with RPi.gpio.
 
 ran
@@ -40,3 +40,15 @@ pypi version 0.5.7 date 2014
 Package notes RPi.gpio library is not suitable for precise real time control. Linux may interrupt to garbage collect.
 For timing critical applications use a microcontroller like Arduino.
 
+I tried running
+    python ./pi_gpio_service/service.py
+
+RuntimeError: No access to /dev/mem. Try running as root!
+
+Apparently RPi.gpio is out of date.
+Current version 0.6.3 doesn't require root.
+
+TODO:
+In conda environment beepscore uninstall version 0.5.11
+then pip install version 0.6.3 source into conda environment
+https://pypi.python.org/pypi/RPi.GPIO
