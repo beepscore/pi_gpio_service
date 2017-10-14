@@ -182,6 +182,7 @@ def gpio_pin(pin_number_string):
     return jsonify(data)
 
 
+# curl --request GET http://10.0.0.4:5000/api/v1/gpio/status/
 @app.route("/api/v1/gpio/status/", methods=['GET'])
 def gpio_status():
     data_list = []
