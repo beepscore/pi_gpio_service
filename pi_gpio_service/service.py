@@ -126,6 +126,16 @@ def pin_update(pin_number_string, value):
     return data
 
 
+def gpio_set_all_outputs(value):
+    data_list = []
+    output_pin_number_strings = sorted(output_pins(pins).keys())
+    for pin_number_string in output_pin_number_strings:
+        data_list.append(pin_update(pin_number_string, value))
+
+    data = {'data': data_list}
+    return jsonify(data)
+
+
 configure_pins(pins)
 
 
@@ -208,13 +218,12 @@ def gpio_status():
 # }
 @app.route("/api/v1/gpio/set-all-outputs-high/", methods=['POST'])
 def gpio_set_all_outputs_high():
-    data_list = []
-    output_pin_number_strings = sorted(output_pins(pins).keys())
-    for pin_number_string in output_pin_number_strings:
-        data_list.append(pin_update(pin_number_string, 1))
+    return gpio_set_all_outputs(1)
 
-    data = {'data': data_list}
-    return jsonify(data)
+
+@app.route("/api/v1/gpio/set-all-outputs-low/", methods=['POST'])
+def gpio_set_all_outputs_low():
+    return gpio_set_all_outputs(0)
 
 
 if __name__ == '__main__':
