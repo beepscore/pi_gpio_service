@@ -22,40 +22,64 @@ https://www.raspberrypi.org/learning/python-web-server-with-flask/worksheet
 
 # Results
 
+## Appendix install flask from anaconda/miniconda
+
+Create anaconda environment
+
+Activate anaconda environment
+
+    source activate beepscore
+
+Install flask
+
+    conda install -n beepscore flask
+
+## run on raspberry pi, view in macos browser
+    python app.py
+
+pi console shows Running on http://0.0.0.0:5000
+
+### Fing
+fing shows raspberry pi is on local network at 10.0.0.4  
+
+On macos browser enter 
+
+    http://10.0.0.4:5000/api/v1/ping/
+    
 ## Appendix RPi.gpio
+Package notes RPi.gpio library is not suitable for precise real time control.
+Linux may interrupt to garbage collect.
+For timing critical applications use a microcontroller like Arduino.
+
+I think Raspbian comes with RPi.gpio
+But program didn't see it, maybe not visible within conda environment.
 miniconda didn't come with RPi.gpio.
 
-ran
+### install with pip
+with conda environment beepscore activated ran
+
+    pip install RPi.GPIO
+
+
+### initially installed with conda, package was out of date
+with conda environment beepscore activated ran
 
     conda install -c ericmjl ri.gpio
 
-version 0.5.11 2016-12-01
-
-Alternatively could use pypi package
-
-    pip install into conda environmentbeepscore.
-
-pypi version 0.5.7 date 2014
-
-Package notes RPi.gpio library is not suitable for precise real time control. Linux may interrupt to garbage collect.
-For timing critical applications use a microcontroller like Arduino.
+This installed an older version 0.5.11 2016-12-01
 
 I tried running
     python ./pi_gpio_service/service.py
 
 RuntimeError: No access to /dev/mem. Try running as root!
 
-Apparently RPi.gpio is out of date.
 Current version 0.6.3 doesn't require root.
 https://raspberrypi.stackexchange.com/questions/40105/access-gpio-pins-without-root-no-access-to-dev-mem-try-running-as-root#40106
 https://pypi.python.org/pypi/RPi.GPIO
 
-### In conda environment beepscore uninstall version 0.5.11
+#### In conda environment beepscore uninstall version 0.5.11
 
     conda list
     conda remove rpi.gpio
     
-### with conda environment beepscore activated
-
-    pip install RPi.GPIO
 
