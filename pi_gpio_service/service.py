@@ -131,14 +131,14 @@ def api_status():
 def gpio_pin(pin_number_string):
     pin_number = int(pin_number_string)
     if request.method == 'GET':
-        data = pin_status(pin_number)
+        data = pin_status(pin_number_string)
 
     elif request.method == 'POST':
         value = request.values['value']
         if value in VALID_HIGH_VALUES:
-            data = pin_update(pin_number, 1)
+            data = pin_update(pin_number_string, 1)
         elif value in VALID_LOW_VALUES:
-            data = pin_update(pin_number, 0)
+            data = pin_update(pin_number_string, 0)
         else:
             data = {'status': 'ERROR',
                     'error': 'Invalid value.'}
