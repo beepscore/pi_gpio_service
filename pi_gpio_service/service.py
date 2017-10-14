@@ -51,6 +51,12 @@ VALID_HIGH_VALUES = [1, '1', 'HIGH']
 VALID_LOW_VALUES = [0, '0', 'LOW']
 
 
+# def get_pin_number(pin):
+#     print('pin_number pin', pin)
+#     pin_number_string = pin(0)
+#     pin_number = int(pin_number)
+
+
 def configure_pin_as_input(pin_number):
     GPIO.setup(pin_number, GPIO.IN)
 
@@ -61,11 +67,11 @@ def configure_pin_as_output(pin_number):
 
 
 def configure_pins(pins):
-    for pin in input_pins(pins):
-        configure_pin_as_input(pin)
+    for pin_number_string in input_pins(pins).keys():
+        configure_pin_as_input(int(pin_number_string))
 
-    for pin in output_pins(pins):
-        configure_pin_as_output(pin)
+    for pin_number_string in output_pins(pins).keys():
+        configure_pin_as_output(int(pin_number_string))
 
 
 def pin_status(pin_number_string):
