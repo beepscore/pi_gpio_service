@@ -139,7 +139,6 @@ def api_status():
 
 @app.route("/api/v1/gpio/<pin_number_string>/", methods=['POST', 'GET'])
 def gpio_pin(pin_number_string):
-    pin_number = int(pin_number_string)
     if request.method == 'GET':
         data = pin_status(pin_number_string)
 
