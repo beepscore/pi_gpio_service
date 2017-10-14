@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env/python3
 
 """ A simple Python flask web service to read and write Raspberry Pi GPIO.
 """
@@ -14,18 +14,25 @@ app = Flask(__name__)
 
 
 # use pins dictionary to keep info "dry"
-pins = {'23': {'name': 'IN_23', 'pin_direction': 'input'},
-        '24': {'name': 'OUT_24', 'pin_direction': 'output'},
-        '25': {'name': 'OUT_25', 'pin_direction': 'output'}
-       }
+pins = {}
 
 
-def input_pins():
-    return [pin for pin in pins if pin['pin_direction'] == 'input']
+def input_pins(pins):
+    inputs = {}
+    for key in pins.keys():
+        if pins[key]['pin_direction'] == 'input':
+            inputs[key] = pins[key]
+
+    return inputs
 
 
-def output_pins():
-    return [pin for pin in pins if pin['pin_direction'] == 'output']
+def output_pins(pins):
+    outputs = {}
+    for key in pins.keys():
+        if pins[key]['pin_direction'] == 'output':
+            outputs[key] = pins[key]
+
+    return outputs
 
 
 VALID_HIGH_VALUES = [1, '1', 'HIGH']
@@ -41,11 +48,11 @@ VALID_LOW_VALUES = [0, '0', 'LOW']
 #     GPIO.output(pin_number, GPIO.LOW)
 
 
-# def configure_pins():
-#     for pin in input_pins():
+# def configure_pins(pins):
+#     for pin in input_pins(pins):
 #         configure_pin_as_input(pin)
 # 
-#     for pin in output_pins():
+#     for pin in output_pins(pins):
 #         configure_pin_as_output(pin)
 
 
@@ -80,7 +87,7 @@ VALID_LOW_VALUES = [0, '0', 'LOW']
 #     return data
 
 
-# configure_pins()
+# configure_pins(pins)
 
 # / is the website root, the entry point
 # http://127.0.0.1:5000
