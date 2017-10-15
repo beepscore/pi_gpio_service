@@ -151,7 +151,7 @@ def end_phone_call():
 
     # open switch
     data = pin_update(phone_switch_pin_number_string, 0)
-    return data
+    return jsonify(data)
 
 
 configure_pins(pins)
