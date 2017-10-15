@@ -5,6 +5,7 @@
 
 from flask import Flask, jsonify, request
 import RPi.GPIO as GPIO
+from time import sleep
 
 # app is a flask object
 app = Flask(__name__)
@@ -126,7 +127,7 @@ def pin_update(pin_number_string, value):
     return data
 
 
-def gpio_set_all_outputs(value):
+def set_all_outputs(value):
     data_list = []
     output_pin_number_strings = sorted(output_pins(pins).keys())
     for pin_number_string in output_pin_number_strings:
@@ -134,6 +135,23 @@ def gpio_set_all_outputs(value):
 
     data = {'data': data_list}
     return jsonify(data)
+
+
+def end_phone_call():
+    """
+    simulate manually clicking headphone switch to end a phone call
+    :return: result of last pin_update
+    """
+    # close switch
+    phone_switch_pin_number_string = '24'
+    data = pin_update(phone_switch_pin_number_string, 1)
+
+    sleep_time_seconds = 1
+    sleep(sleep_time_seconds)
+
+    # open switch
+    data = pin_update(phone_switch_pin_number_string, 0)
+    return data
 
 
 configure_pins(pins)
@@ -154,6 +172,17 @@ def api_status():
         return jsonify(data)
 
 
+# curl --request GET http://10.0.0.4:5000/api/v1/gpio/status/
+@app.route("/api/v1/gpio/status/", methods=['GET'])
+def gpio_status():
+    data_list = []
+    for pin_number_string in sorted(pins.keys()):
+        data_list.append(pin_status(pin_number_string))
+
+    data = {'data': data_list}
+    return jsonify(data)
+
+
 # GET will return status, POST will set pin value
 # in client terminal can use curl, e.g.
 # curl --request POST --data "value=0" http://10.0.0.4:5000/api/v1/gpio/24/
@@ -165,7 +194,7 @@ def api_status():
 #   "pin_number": "24",
 #   "status": "SUCCESS"
 # }
-@app.route("/api/v1/gpio/<pin_number_string>/", methods=['POST', 'GET'])
+@app.route("/api/v1/gpio/<pin_number_string>/", methods=['GET', 'POST'])
 def gpio_pin(pin_number_string):
     if request.method == 'GET':
         data = pin_status(pin_number_string)
@@ -179,17 +208,6 @@ def gpio_pin(pin_number_string):
         else:
             data = {'status': 'ERROR',
                     'error': 'Invalid value.'}
-    return jsonify(data)
-
-
-# curl --request GET http://10.0.0.4:5000/api/v1/gpio/status/
-@app.route("/api/v1/gpio/status/", methods=['GET'])
-def gpio_status():
-    data_list = []
-    for pin_number_string in sorted(pins.keys()):
-        data_list.append(pin_status(pin_number_string))
-
-    data = {'data': data_list}
     return jsonify(data)
 
 
@@ -219,12 +237,18 @@ def gpio_status():
 # }
 @app.route("/api/v1/gpio/set-all-outputs-high/", methods=['POST'])
 def gpio_set_all_outputs_high():
-    return gpio_set_all_outputs(1)
+    return set_all_outputs(1)
 
 
 @app.route("/api/v1/gpio/set-all-outputs-low/", methods=['POST'])
 def gpio_set_all_outputs_low():
-    return gpio_set_all_outputs(0)
+    return set_all_outputs(0)
+
+
+# POST but not GET because GET should not change any state on the server
+@app.route("/api/v1/gpio/end-phone-call/", methods=['POST'])
+def gpio_end_phone_call():
+    return end_phone_call()
 
 
 if __name__ == '__main__':
