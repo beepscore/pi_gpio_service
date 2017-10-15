@@ -35,7 +35,10 @@ e.g. in client browser enter
 
     http://10.0.0.4:5000/api/v1/ping/
     http://10.0.0.4:5000/api/v1/gpio/status/
+    http://10.0.0.4:5000/api/v1/gpio/<pin_number>/
     http://10.0.0.4:5000/api/v1/gpio/set-all-outputs-high/
+    http://10.0.0.4:5000/api/v1/gpio/set-all-outputs-low/
+    http://10.0.0.4:5000/api/v1/gpio/end-phone-call/
 
 ## Appendix install flask from anaconda/miniconda
 
