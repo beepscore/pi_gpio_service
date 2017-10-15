@@ -19,6 +19,14 @@ https://www.raspberrypi.org/learning/python-web-server-with-flask/worksheet
 https://github.com/beepscore/basic_flask
 https://www.raspberrypi.org/learning/python-web-server-with-flask/worksheet
 
+## iPhone Headphone plug pinouts
+http://www.friendmichael.com/Blog/iphone-headphone-plug-pinouts.html
+
+##  iPad / iPhone / iPod Touch Microphone Adapter Wiring Diagram
+http://www.blackcatsystems.com/ipad/iPad_iPhone_iPod_Touch_Microphone_Wiring.html
+
+## How to Hack a Headphone Jack
+http://www.circuitbasics.com/how-to-hack-a-headphone-jack/
 
 # Results
 
@@ -86,4 +94,12 @@ https://pypi.python.org/pypi/RPi.GPIO
     conda list
     conda remove rpi.gpio
     
+
+## Appendix switched jack for iPhone
+
+The iDevice needs to see a resistance in the neighborhood of 5k between the microphone conductor and ground.
+That tells it that a microphone has been plugged in.
+If it is a direct short, it thinks a headphone was plugged in.
+Open circuit means nothing was plugged in.
+http://www.blackcatsystems.com/ipad/iPad_iPhone_iPod_Touch_Microphone_Wiring.html
 
