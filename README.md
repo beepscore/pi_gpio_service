@@ -34,12 +34,23 @@ http://www.circuitbasics.com/how-to-hack-a-headphone-jack/
 
 # Results
 
-### endpoints
-e.g. in client browser enter 
+## endpoints
+
+### GET
+e.g. use client browser or curl
 
     http://10.0.0.4:5000/api/v1/ping/
     http://10.0.0.4:5000/api/v1/gpio/status/
+    
+    read pin status
     http://10.0.0.4:5000/api/v1/gpio/<pin_number>/
+
+### POST
+e.g. use curl
+
+    write a pin value
+    http://10.0.0.4:5000/api/v1/gpio/<pin_number>/
+    
     http://10.0.0.4:5000/api/v1/gpio/set-all-outputs-high/
     http://10.0.0.4:5000/api/v1/gpio/set-all-outputs-low/
     http://10.0.0.4:5000/api/v1/gpio/end-phone-call/
