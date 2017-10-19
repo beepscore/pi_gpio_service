@@ -73,7 +73,6 @@ if __name__ == '__main__':
     except RuntimeError:
         pass
     finally:
-        # fix RunTimeWarning This channel is already in use
         # may need to put in a try:catch:finally finally section to handle exceptions
-        GPIO.cleanup()
+        pass
 
