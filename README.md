@@ -144,15 +144,15 @@ Ensure that no power is supplied to Raspberry Pi or PiFace Digital 2 boards when
 
 ## JP3
 Power share jumper
-JP3 selects whether the PiFace™ Digital 2 shares the same power source as the
-Raspberry Pi®. This supply can be either provided through the Raspberry Pi®’s MicroUSB
-connector, or from an external supply provided through PiFace™ Digital 2’s 5V and GND
-power screw terminals. With the jumper connected, the Raspberry Pi® and  PiFace™
+JP3 selects whether the PiFace Digital 2 shares the same power source as the
+Raspberry Pi. This supply can be either provided through the Raspberry Pi’s MicroUSB
+connector, or from an external supply provided through PiFace Digital 2’s 5V and GND
+power screw terminals. With the jumper connected, the Raspberry Pi and  PiFace
 Digital 2 will share a single power supply. Disconnected, they will each need to be powered
 separately.
 
 ### WARNING:
-NEVER USE SEPARATE POWER SUPPLIES FOR BOTH THE RASPBERRY PI® AND PIFACE™ DIGITAL 2 WHEN THIS JUMPER IS CONNECTED.
+NEVER USE SEPARATE POWER SUPPLIES FOR BOTH THE RASPBERRY PI AND PIFACE DIGITAL 2 WHEN THIS JUMPER IS CONNECTED.
 
 // TODO: disconnect to maximize isolation between pi and controlled device
 *After* disconnecting, connect separate 5v supply
