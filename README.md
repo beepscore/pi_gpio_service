@@ -152,8 +152,7 @@ Digital 2 will share a single power supply. Disconnected, they will each need to
 separately.
 
 ### WARNING:
-never use separate power supplies for both the raspberry pi® and piface™ digital 2,
-when this jumper is connected.
+NEVER USE SEPARATE POWER SUPPLIES FOR BOTH THE RASPBERRY PI® AND PIFACE™ DIGITAL 2 WHEN THIS JUMPER IS CONNECTED.
 
 // TODO: disconnect to maximize isolation between pi and controlled device
 *After* disconnecting, connect separate 5v supply
