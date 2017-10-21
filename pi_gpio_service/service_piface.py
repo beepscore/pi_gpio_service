@@ -31,7 +31,9 @@ def end_phone_call():
     # turn relay0 on
     relay0.value = 1
 
-    delay_seconds = 0.2
+    # delay_seconds = 0.2 relay clicked but sometimes phone call didn't end
+    # increase delay
+    delay_seconds = 0.4
     sleep(delay_seconds)
 
     # turn relay0 off
