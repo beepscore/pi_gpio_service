@@ -5,8 +5,9 @@ Make a simple Python flask web service to read and write Raspberry Pi GPIO.
 
 ## service_piface.py
 Uses PiFace.
-must run as sudo, else library not found?
+must run as sudo, else library not found.
 
+    source activate beepscore
     sudo python3 ./pi_gpio_service/service_piface.py
 
 ### endpoints
@@ -25,6 +26,7 @@ e.g. use curl
 ## service.py
 Uses gpio pins, not PiFace
 
+    source activate beepscore
     python3 ./pi_gpio_service/service.py
 
 ### endpoints
@@ -49,6 +51,12 @@ e.g. use curl
     http://10.0.0.4:5000/api/v1/gpio/end-phone-call/
 
 # References
+
+## XCUITest an iOS app phone call
+http://beepscore.com/xcuitest-ios-app-phone-call/index.html
+
+## Using a Raspberry Pi to end an iPhone phone call
+http://beepscore.com/using-raspberry-pi-to-end-iphone-phone-call/
 
 ## Phoney
 Phoney is an iOS application to experiment with testing phone calls.
@@ -227,12 +235,12 @@ https://pypi.python.org/pypi/RPi.GPIO
     conda remove rpi.gpio
 
 
-## Appendix switched jack for iPhone
+## Appendix headphone breakout switch for iPhone
 
-#### iPhone Headphone plug pinouts
-http://www.friendmichael.com/Blog/iphone-headphone-plug-pinouts.html
+### Making an iPhone Headphone Breakout Switch
+http://beepscore.com/making-an-iphone-headphone-breakout-switch/index.html
 
-#### iPad / iPhone / iPod Touch Microphone Adapter Wiring Diagram
+### iPad / iPhone / iPod Touch Microphone Adapter Wiring Diagram
 http://www.blackcatsystems.com/ipad/iPad_iPhone_iPod_Touch_Microphone_Wiring.html  
 
 The iDevice needs to see a resistance in the neighborhood of 5k between the microphone conductor and ground.
@@ -240,6 +248,9 @@ That tells it that a microphone has been plugged in.
 If it is a direct short, it thinks a headphone was plugged in.
 Open circuit means nothing was plugged in.
 
-#### How to Hack a Headphone Jack
+### iPhone Headphone plug pinouts
+http://www.friendmichael.com/Blog/iphone-headphone-plug-pinouts.html
+
+### How to Hack a Headphone Jack
 http://www.circuitbasics.com/how-to-hack-a-headphone-jack/
 
