@@ -7,7 +7,7 @@ Make a simple Python flask web service to read and write Raspberry Pi GPIO.
 Uses PiFace.
 must run as sudo, else library not found.
 
-    source activate beepscore
+    conda activate beepscore
     sudo python3 ./pi_gpio_service/service_piface.py
 
 ### endpoints
@@ -26,7 +26,7 @@ e.g. use curl
 ## service.py
 Uses gpio pins, not PiFace
 
-    source activate beepscore
+    conda activate beepscore
     python3 ./pi_gpio_service/service.py
 
 ### endpoints
@@ -84,7 +84,7 @@ Create anaconda environment
 
 Activate anaconda environment
 
-    source activate beepscore
+    conda activate beepscore
 
 Install flask
 
